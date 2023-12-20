@@ -1,0 +1,18 @@
+cmake_minimum_required(VERSION 3.24.0)
+project(WildHunt LANGUAGES CXX)
+
+add_subdirectory(src)
+add_subdirectory(config)
+set(INSTALL_CONFIG_DIR ${CMAKE_INSTALL_PREFIX}/config)
+configure_file(config/window.ini ${CMAKE_BINARY_DIR}/config/window.ini COPYONLY)
+include(FetchContent)
+
+FetchContent_Declare(
+
+	SFML
+	GIT_REPOSITORY https://github.com/SFML/SFML.git
+    	GIT_TAG 2.6.x
+
+)
+
+FetchContent_MakeAvailable(SFML)
