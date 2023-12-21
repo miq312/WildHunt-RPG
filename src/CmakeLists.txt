@@ -1,15 +1,17 @@
 set(SOURCES
-main.cpp 
-Game.cpp
-State.cpp
-GameState.cpp
+    main.cpp 
+    Game.cpp
+    states/State.cpp
+    states/GameState.cpp
+    entities/Entity.cpp
 )
 
 set(HEADERS
-main.h  
-Game.h
-State.h
-GameState.h
+    main.h  
+    Game.h
+    states/State.h
+    states/GameState.h
+    entities/Entity.h
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})

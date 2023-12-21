@@ -1,12 +1,11 @@
 #pragma once
-#include <iostream>
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
 #include <SFML/Audio.hpp>
 #include <SFML/Network.hpp>
 
-#include "State.h"
+#include "states/GameState.h"
 
 class Game
 {
@@ -18,14 +17,18 @@ private:
 	sf::Clock dtClock;
 	float dt;
 
+	std::stack<State*> states;
+
 	//Initialization
 	void initWindow();
+	void initStates();
 
 public:
 	Game();
 	~Game();
 
 	//Functions
+	void endApplication();
 	void updateDt();
 	void updateSFMLEvents();
 	void update();
