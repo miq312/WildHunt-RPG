@@ -1,3 +1,5 @@
 set(SOURCES
-    win.ini
+    window.ini
+    keys.ini
+    gamestate_keys.ini
 )

@@ -5,7 +5,7 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Network.hpp>
 
-#include "states/GameState.h"
+#include "states/MenuState.h"
 
 class Game
 {
@@ -19,8 +19,11 @@ private:
 
 	std::stack<State*> states;
 
+	std::map<std::string, int> supportedKeys;
+
 	//Initialization
 	void initWindow();
+	void initKeys();
 	void initStates();
 
 public:

@@ -25,14 +25,37 @@ void Game::initWindow()
     this->window->setVerticalSyncEnabled(vertical_sync_enabled);
 }
 
+void Game::initKeys()
+{
+    
+    std::ifstream ifs("../config/keys.ini");
+
+    if (ifs.is_open())
+    {
+        std::string key = "";
+        int key_value = 0;
+
+        while (ifs >> key >> key_value)
+        {
+            this->supportedKeys[key] = key_value;
+        }
+    }
+
+    ifs.close();
+
+    for (auto i : this->supportedKeys)
+        std::cout << i.first << " " << i.second << std::endl;
+}
+
 void Game::initStates()
 {
-    this->states.push(new GameState(this->window));
+    this->states.push(new MenuState(this->window, &this->supportedKeys));
 }
 
 Game::Game()
 {
     this->initWindow();
+    this->initKeys();
     this->initStates();
 }
 
