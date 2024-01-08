@@ -31,12 +31,15 @@ MenuState::MenuState(sf::RenderWindow* window, std::map<std::string, int>* suppo
 	this->initFonts();
 	this->initKeybinds();
 
+	this->test = new Button(100,100,150,150, &this->font, "test", sf::Color::Red, sf::Color::Blue, sf::Color::Green);
+
 	this->background.setSize(sf::Vector2f(this->window->getSize().x, this->window->getSize().y));
 	this->background.setFillColor(sf::Color::Magenta);
 }
 
 MenuState::~MenuState()
 {
+	delete this->test;
 }
 
 void MenuState::endState()
@@ -55,6 +58,8 @@ void MenuState::update(const float& dt)
 {
 	this->updateMousePos();
 	this->updateInput(dt);
+
+	this->test->update(this->mousePosView);
 }
 
 void MenuState::render(sf::RenderTarget* target)
@@ -63,4 +68,6 @@ void MenuState::render(sf::RenderTarget* target)
 		target = this->window;
 
 	target->draw(this->background);
+
+	this->test->render(target);
 }

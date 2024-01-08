@@ -11,6 +11,8 @@ private:
 	sf::RectangleShape background;
 	sf::Font font;
 
+	Button* test;
+
 	void initFonts();
 	void initKeybinds();
 public:
